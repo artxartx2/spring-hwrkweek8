@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+    <title>News List</title>
+    <style>
+        .h-scroll {
+            height: 80vh; /* %-height of the viewport */
+            position: center;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Back to main page</a></li>
+        <li class="breadcrumb-item"><a href="/add-note">Add note</a></li>
+    </ol>
+
+</nav>
+
+<h1 align="center">Note List</h1>
+
+
+<div class="container h-scroll" align="center" style="margin-top: 40px;width: 100%">
+    <div class="card" align="left" style="margin-top: 2px" th:each="noteItem : ${noteList}">
+        <form th:name="form_+${noteItem.getId()}" th:action="@{/add-note}" th:object="${noteItem}" method="post">
+
+            <div class="card-header">
+                <table style="width: 100%">
+                    <td><h5> Note Id :
+                        <input style="width: 60px" hidden type="text" th:value="*{id}" class="form-control" id="id"
+                               name="id"/>
+                        <a th:text="*{id}"></a>
+                    </h5>
+                    </td>
+                    <td>
+                        Created At : <a
+                            th:text="${#temporals.format(noteItem.creationDate, 'yyyy-MM-dd HH:mm:ss')}"></a>
+                    </td>
+                    <td>
+                        <input th:type="datetime-local" th:value="${noteItem.creationDate}" hidden
+                               name="creationDate"></input>
+                    </td>
+                    <td th:if="${noteItem.modifyDate}">
+                        Last modification At:<a
+                            th:text="${#temporals.format(noteItem.modifyDate, 'yyyy-MM-dd HH:mm:ss')}"></a>
+                    </td>
+                </table>
+            </div>
+            <div class="card-body">
+                <div>
+                    <textarea class="form-control" rows="1" name="title" th:text="*{title}"
+                              placeholder="Enter title "
+                              id="title"></textarea>
+                </div>
+                <div>
+                    <textarea class="form-control" rows="3" name="content" th:text="*{content}"
+                              placeholder="Enter content "
+                              id="description"></textarea>
+                </div>
+                <button style="margin-top: 10px" type="submit" class="btn btn-primary">Modify</button>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
