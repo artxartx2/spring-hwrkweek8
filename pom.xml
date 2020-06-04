@@ -59,18 +59,18 @@
             </exclusions>
         </dependency>
 
-       <dependency>
-        <groupId>org.thymeleaf.extras</groupId>
-        <artifactId>thymeleaf-extras-java8time</artifactId>
+<!--       <dependency>-->
+<!--        <groupId>org.thymeleaf.extras</groupId>-->
+<!--        <artifactId>thymeleaf-extras-java8time</artifactId>-->
 
-    </dependency>
+<!--    </dependency>-->
 
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-java8 -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-java8</artifactId>
-            <version>5.4.17.Final</version>
-        </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.hibernate/hibernate-java8 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.hibernate</groupId>-->
+<!--            <artifactId>hibernate-java8</artifactId>-->
+<!--            <version>5.4.17.Final</version>-->
+<!--        </dependency>-->
 
 
     </dependencies>
